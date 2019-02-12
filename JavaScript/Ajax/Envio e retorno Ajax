@@ -1,0 +1,21 @@
+
+<script>
+    function retornaOs() {
+
+        $.ajax({
+        type: "POST",
+        crossDomain: true,
+        data: { dataInicio: $('#data-inicio').val(), dataFim: $('#data-fim').val()}
+        url: '/consulta.php',
+        dataType: "JSON",
+        async: false,
+        beforeSend: function (xhr) {
+            app.dialog.preloader('Buscando os');
+        },
+        success: function (result) {
+            console.log(result);
+        }
+        };
+</script>
+
+// https://pt.stackoverflow.com/questions/361765/fazer-uma-pesquisa-entre-duas-data-php-html-mysql/361926#361926
