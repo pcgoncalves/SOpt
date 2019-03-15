@@ -1,0 +1,9 @@
+-- Retornanr registro entre datas, menos os que.
+SELECT p.codigo_usuario,
+      p.data_producao
+  FROM tbproducao p
+WHERE p.data_producao BETWEEN TO_DATE('01/02/2013', 'DD/MM/YYYY') AND TO_DATE('30/03/2013', 'DD/MM/YYYY')
+  AND NOT EXISTS(SELECT 1
+                    FROM tbproducao p2
+                  WHERE p2.codigo_usuario = p.codigo_usuario
+                    AND p2.data_producao < TO_DATE('01/02/2013', 'DD/MM/YYYY'))
