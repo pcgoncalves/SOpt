@@ -1,0 +1,13 @@
+$('#ID_INPUT').keypress(function(){
+		
+   var tecla = (window.event)?event.keyCode:e.which;
+   var aceitarPonto = false;
+   var aceitarVirugla = true;
+
+  if((tecla > 47 && tecla < 58) || (tecla == 46 && aceitarPonto) || (tecla == 44 && aceitarVirugla)) {
+      return true;
+    } else {
+    return (tecla == 8 || tecla == 0)?true:false;
+  }
+
+});
