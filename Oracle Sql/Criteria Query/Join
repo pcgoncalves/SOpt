@@ -1,0 +1,16 @@
+CriteriaQuery<Translation> translationQuery = builder.createQuery(Translation.class);
+Metamodel m = em.getMetamodel();
+EntityType<Translation> Translation_ = m.entity(Translation.class);
+
+Root<Translation> translation = translationQuery.from(Translation.class);
+Join<Translation, Document> documents = translation.join(Translation_.documents);
+
+cq.where(pet.get(Pet_.color).isNull());
+
+List<Long> ids = new ArrayList<>();
+ids.add(1);
+ids.add(2);
+ids.add(3);
+Predicate idPredicate = translation.in(ids);
+translationQuery.where(idPredicate);
+translationQuery.distinct(true);
